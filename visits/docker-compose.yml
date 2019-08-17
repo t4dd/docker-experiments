@@ -3,6 +3,15 @@ services:
   redis-server:
     image: 'redis'
   node-app:
+    # restart on any failure #
+    restart: always
+
+    # attempts to restart if error code is > 0 #
+    #restart: on-failure
+    
+    # restart all the time unless explicitly stopped $
+    #restart: unless-stopped
+    
     build: .
     ports:
       - "9091:9091"
